@@ -1,4 +1,5 @@
-# This program stores all Chinese province and capital names in dicts
+# This program stores information related to regions and cities in China in dicts and lists
+# Through user interaction, in then presents the desired information 
 
 from num2words import num2words
 
