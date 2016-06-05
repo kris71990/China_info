@@ -1,5 +1,5 @@
 # This program stores information related to regions and cities in China in dicts and lists
-# Through user interaction, in then presents the desired information 
+# Through user interaction, it then presents the desired information 
 
 from num2words import num2words
 
