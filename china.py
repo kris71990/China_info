@@ -3,32 +3,10 @@
 
 import webbrowser 
 from num2words import num2words
-
-province = {
-	"Hebei": "HE",
-	"Shanxi": "SX",
-	"Liaoning": "LN", 
-	"Jilin": "JL",
-	"Heilongjiang": "HL",
-	"Jiangsu": "JS",
-	"Zhejiang": "ZJ",
-	"Anhui": "AH",
-	"Fujian": "FJ",
-	"Jiangxi": "JX",
-	"Shandong": "SD",
-	"Henan": "HA",
-	"Hubei": "HB",
-	"Hunan": "HN",
-	"Guangdong": "GD",
-	"Hainan": "HI",
-	"Sichuan": "SC",
-	"Guizhou": "GZ",
-	"Yunnan": "YN",
-	"Shaanxi": "SN",
-	"Gansu": "GS",
-	"Qinghai": "QH",
-	"Taiwan": "TW"
-}
+import provdicts
+import mundicts
+import autregdicts
+import admregdicts
 
 province_pop = ['60,300,000', '37,700,011', '25,575,254', '107,240,000', '34,746,468', 
 				'8,900,000', '73,326,101', '38,312,224', '94,100,000', '58,160,000', 
@@ -48,51 +26,12 @@ prov_area = ['139,600', '122,400', '425,800', '179,800', '176,167', '35,400', '1
 prov_area_rank = ['22nd', '23rd', '7th', '15th', '16th', '28th', '12th', '6th', '17th', '13th',
 					'10th', '25th', '18th', '14th', '21st', '4th', '11th', '20th', '19th', 
 					 '5th', '', '12th', '26th']
-					 
-prov_capitals = {
-	"Hebei": "Shijiazhuang",
-	"Shanxi": "Taiyuan",
-	"Liaoning": "Shenyang",
-	"Jilin": "Changchun",
-	"Heilongjiang": "Harbin",
-	"Jiangsu": "Nanjing",
-	"Zhejiang": "Hangzhou",
-	"Anhui": "Hefei",
-	"Fujian": "Fuzhou",
-	"Jiangxi": "Nanchang",
-	"Shandong": "Jinan",
-	"Henan": "Zhengzhou",
-	"Hubei": "Wuhan",
-	"Hunan": "Changsha",
-	"Guangdong": "Guangzhou",
-	"Hainan": "Haikou",
-	"Sichuan": "Chengdu",
-	"Guizhou": "Guiyang",
-	"Yunnan": "Kunming",
-	"Shaanxi": "Xi'an",
-	"Gansu": "Lanzhou",
-	"Qinghai": "Xining",
-	"Taiwan": "Taipei"
-}					 
-				
+			
 prov_cap_pop = ['7,790,000', '7,115,370', '3,616,163', '13,080,500', '4,324,561', '2,046,189',
 				'10,701,600', '10,635,971', '9,378,000', '10,607,700', '7,311,500', '8,230,000', 
 				'5,042,565', '7,674,439', '8,106,171', '2,208,708', '8,705,600', '7,067,900', 
 				'4,201,591', '14,427,500', '2,704,974', '6,626,000', '9,018,000']
 
-municipality = {
-	"Beijing": "BJ",
-	"Tianjin": "TJ",
-	"Shanghai": "SH",
-	"Chongqing": "CQ"
-}
-
-mun_capitals = {
-	"Beijing": "Beijing",
-	"Tianjin": "Tianjin",
-	"Shanghai": "Shanghai",
-	"Chongqing": "Chongqing"
-}
 
 muni_pop = ['21,700,000', '28,846,170', '24,152,700', '15,469,500']
 muni_pop_rank = ['27th', '20th', '24th', '28th']
@@ -100,21 +39,6 @@ muni_area = ['16,410', '82,403', '6,340', '11,760']
 muni_area_rank = ['29th', '26th', '31st', '30th'] 
 muni_cap_pop = ['18,590,000', '18,384,100', '24,152,700', '12,784,000']
 
-autregion = {
-	"Inner Mongolia": "NM",
-	"Guangxi Zhuang": "GX",
-	"Tibet": "XZ",
-	"Ningxia Hui": "NX",
-	"Xinjiang Uyghur": "XJ"
-}
-
-autregion_capitals = {	
-	"Inner Mongolia": "Hohhot",
-	"Guangxi Zhuang": "Nanning",
-	"Tibet": "Lhasa",
-	"Ningxia Hui": "Yinchuan",
-	"Xinjiang Uyghur": "Urumqi"
-}
 
 autregion_pop = ['46,026,629', '24,706,321', '6,301,350', '3,180,000', '21,815,515']
 autregion_pop_rank = ['11th', '23rd', '31st', '32nd', '25th']
@@ -122,15 +46,6 @@ autregion_area = ['236,700', '1,183,000', '66,399', '1,228,400', '1,664,897']
 autregion_area_rank = ['9th', '3rd', '27th', '2nd', '1st']
 autregion_cap_pop = ['6,913,800', '2,866,615', '1,993,088', '559,423', '3,112,559']
 
-admregion = {
-	"Hong Kong": "HK",
-	"Macau": "MC"
-}
-	
-admregion_capitals = {
-	"Hong Kong": "Hong Kong",
-	"Macau": "Macau"
-}
 
 admregion_pop = ['7,234,800', '643,100']
 admregion_pop_rank = ['30th', '33rd']
@@ -162,47 +77,47 @@ def start_again():
 			prompt = raw_input()
 	
 def province_info():
-	print "\nHere is a list of the " + num2words(len(province)) + " provinces" \
+	print "\nHere is a list of the " + num2words(len(provdicts.province)) + " provinces" \
 			" in China and their abbreviations: \n"
-	for prov, abbrev in sorted(province.items()):
+	for prov, abbrev in sorted(provdicts.province.items()):
 		if prov == "Taiwan":
 			print "* %s --> %s" % (prov, abbrev)
 		else:
 			print "%s --> %s" % (prov, abbrev)
 	
-	print "\nAdditionally, here are the " + num2words(len(municipality)) + " municipalities" \
-			" and their abbreviations: \n"
-	for mun, abbrev in sorted(municipality.items()):
+	print "\nAdditionally, here are the " + num2words(len(mundicts.municipality)) + \
+			" municipalities and their abbreviations: \n"
+	for mun, abbrev in sorted(mundicts.municipality.items()):
 		print "%s --> %s" % (mun, abbrev)
 	
-	print "\nHere are the " + num2words(len(autregion)) + " autonomous regions" \
+	print "\nHere are the " + num2words(len(autregdicts.autregion)) + " autonomous regions" \
 			" and their abbreviations: \n"
-	for autreg, abbrev in sorted(autregion.items()):
+	for autreg, abbrev in sorted(autregdicts.autregion.items()):
 		print "%s --> %s" % (autreg, abbrev)
 	
-	print "\nThese are the " + num2words(len(admregion)) + " Special Adminstrative" \
+	print "\nThese are the " + num2words(len(admregdicts.admregion)) + " Special Adminstrative" \
 			" Regions and their abbreviations: \n"
-	for admreg, abbrev in sorted(admregion.items()):
+	for admreg, abbrev in sorted(admregdicts.admregion.items()):
 		print "%s --> %s" % (admreg, abbrev)
 
 def capital_info():
 	print "\nHere is a list of each province's capital: \n"
-	for province, capital in sorted(prov_capitals.items()):
+	for province, capital in sorted(provdicts.prov_capitals.items()):
 		if province == "Taiwan":
 			print "* %s --> %s" % (province, capital)
 		else:
 			print "%s --> %s" % (province, capital)
 	
 	print "\nHere is each municipality's capital: \n"
-	for mun, capital in sorted(mun_capitals.items()):
+	for mun, capital in sorted(mundicts.mun_capitals.items()):
 		print "%s --> %s" % (mun, capital)
 		
 	print "\nCapitals of Autonomous Regions: \n"	
-	for autregion, capital in sorted(autregion_capitals.items()):
+	for autregion, capital in sorted(autregdicts.autregion_capitals.items()):
 		print "%s --> %s" % (autregion, capital)
 		
 	print "\nCapitals of Special Administrative Regions: \n"	
-	for admregion, capital in sorted(admregion_capitals.items()):
+	for admregion, capital in sorted(admregdicts.admregion_capitals.items()):
 		print "%s --> %s" % (admregion, capital)
 	
 def more_info():
@@ -219,25 +134,25 @@ def more_info():
 	adm_abbrev = []
 	admregion_capital = []
 	
-	for key, value in sorted(province.items()):
+	for key, value in sorted(provdicts.province.items()):
 		provinces.append(key)
 		province_abbrev.append(value)
-	for key, value in sorted(prov_capitals.items()):
+	for key, value in sorted(provdicts.prov_capitals.items()):
 		prov_capital.append(value)
-	for key, value in sorted(municipality.items()):
+	for key, value in sorted(mundicts.municipality.items()):
 		municipalities.append(key)
 		mun_abbrev.append(value)
-	for key, value in sorted(mun_capitals.items()):
+	for key, value in sorted(mundicts.mun_capitals.items()):
 		mun_capital.append(value)
-	for key, value in sorted(autregion.items()):
+	for key, value in sorted(autregdicts.autregion.items()):
 		autregions.append(key)
 		aut_abbrev.append(value)
-	for key, value in sorted(autregion_capitals.items()):
+	for key, value in sorted(autregdicts.autregion_capitals.items()):
 		autregion_cap.append(value)
-	for key, value in admregion.items():
+	for key, value in admregdicts.admregion.items():
 		admregions.append(key)
 		adm_abbrev.append(value)
-	for key, value in admregion_capitals.items():
+	for key, value in admregdicts.admregion_capitals.items():
 		admregion_capital.append(value)
 		
 	while True:
