@@ -6,4 +6,4 @@ admregion = {
 admregion_capitals = {
 	"Hong Kong": "Hong Kong",
 	"Macau": "Macau"
-}
+} 
