@@ -53,13 +53,13 @@ admregion_area = ['1,104', '30.3']
 admregion_area_rank = ['32nd', '33rd']
 
 def start():
-	print u'\n\u4f60\u597d, let\'s learn about China!'
+	print(u'\n\u4f60\u597d, let\'s learn about China!')
 	start_again()
 			
 def start_again():
-	print "\nType 'province' or 'capital' for more information."
-	print "Type 'q' to quit."
-	prompt = raw_input("> ").lower()
+	print("\nType 'province' or 'capital' for more information.")
+	print("Type 'q' to quit.")
+	prompt = input("> ").lower()
 	while True:
 		if prompt == 'province':
 			province_info()
@@ -70,55 +70,55 @@ def start_again():
 			more_info()
 			break
 		elif prompt == 'q' or prompt == 'quit':
-			print u'\nHope you enjoyed learning about China, \u518d\u89c1!'.encode('utf-8')
+			print(u'\nHope you enjoyed learning about China, \u518d\u89c1!')
 			exit(0)
 		else:
-			print "Type one of the keywords: ",
-			prompt = raw_input()
+			print("Type one of the keywords: ",)
+			prompt = input()
 	
 def province_info():
-	print "\nHere is a list of the " + num2words(len(provdicts.province)) + " provinces" \
-			" in China and their abbreviations: \n"
+	print("\nHere is a list of the " + num2words(len(provdicts.province)) + " provinces" \
+			" in China and their abbreviations: \n")
 	for prov, abbrev in sorted(provdicts.province.items()):
 		if prov == "Taiwan":
-			print "* %s --> %s" % (prov, abbrev)
+			print("* %s --> %s" % (prov, abbrev))
 		else:
-			print "%s --> %s" % (prov, abbrev)
+			print("%s --> %s" % (prov, abbrev))
 	
-	print "\nAdditionally, here are the " + num2words(len(mundicts.municipality)) + \
-			" municipalities and their abbreviations: \n"
+	print("\nAdditionally, here are the " + num2words(len(mundicts.municipality)) + \
+			" municipalities and their abbreviations: \n")
 	for mun, abbrev in sorted(mundicts.municipality.items()):
-		print "%s --> %s" % (mun, abbrev)
+		print("%s --> %s" % (mun, abbrev))
 	
-	print "\nHere are the " + num2words(len(autregdicts.autregion)) + " autonomous regions" \
-			" and their abbreviations: \n"
+	print("\nHere are the " + num2words(len(autregdicts.autregion)) + " autonomous regions" \
+			" and their abbreviations: \n")
 	for autreg, abbrev in sorted(autregdicts.autregion.items()):
-		print "%s --> %s" % (autreg, abbrev)
+		print("%s --> %s" % (autreg, abbrev))
 	
-	print "\nThese are the " + num2words(len(admregdicts.admregion)) + " Special Adminstrative" \
-			" Regions and their abbreviations: \n"
+	print("\nThese are the " + num2words(len(admregdicts.admregion)) + " Special Adminstrative" \
+			" Regions and their abbreviations: \n")
 	for admreg, abbrev in sorted(admregdicts.admregion.items()):
-		print "%s --> %s" % (admreg, abbrev)
+		print("%s --> %s" % (admreg, abbrev))
 
 def capital_info():
-	print "\nHere is a list of each province's capital: \n"
+	print("\nHere is a list of each province's capital: \n")
 	for province, capital in sorted(provdicts.prov_capitals.items()):
 		if province == "Taiwan":
-			print "* %s --> %s" % (province, capital)
+			print("* %s --> %s" % (province, capital))
 		else:
-			print "%s --> %s" % (province, capital)
+			print("%s --> %s" % (province, capital))
 	
-	print "\nHere is each municipality's capital: \n"
+	print("\nHere is each municipality's capital: \n")
 	for mun, capital in sorted(mundicts.mun_capitals.items()):
-		print "%s --> %s" % (mun, capital)
+		print("%s --> %s" % (mun, capital))
 		
-	print "\nCapitals of Autonomous Regions: \n"	
+	print("\nCapitals of Autonomous Regions: \n")
 	for autregion, capital in sorted(autregdicts.autregion_capitals.items()):
-		print "%s --> %s" % (autregion, capital)
+		print("%s --> %s" % (autregion, capital))
 		
-	print "\nCapitals of Special Administrative Regions: \n"	
+	print("\nCapitals of Special Administrative Regions: \n")
 	for admregion, capital in sorted(admregdicts.admregion_capitals.items()):
-		print "%s --> %s" % (admregion, capital)
+		print("%s --> %s" % (admregion, capital))
 	
 def more_info():
 	provinces = []
@@ -156,12 +156,12 @@ def more_info():
 		admregion_capital.append(value)
 		
 	while True:
-		print "\nType a province's abbreviation for more information about each territory. "
-		print "For a list of province abbreviations, type 'province'."
-		print "Type 'q' to quit."
-		x = raw_input("> ").lower()
+		print("\nType a province's abbreviation for more information about each territory. ")
+		print("For a list of province abbreviations, type 'province'.")
+		print("Type 'q' to quit.")
+		x = input("> ").lower()
 		if x == 'q':
-			print u'\nHope you enjoyed learning about China, \u518d\u89c1!'.encode('utf-8')
+			print(u'\nHope you enjoyed learning about China, \u518d\u89c1!')
 			exit(0)
 		elif x == 'capital':
 			capital_info()
@@ -343,59 +343,59 @@ def more_info():
 								 prov_capital[22], prov_cap_pop[22])
 			continue
 		else:
-			print "Type a province abbreviation, or 'q' to quit: "
-			x = raw_input("> ").lower()
+			print("Type a province abbreviation, or 'q' to quit: ")
+			x = input("> ").lower()
 			if x == 'q':
-				print u'\nHope you enjoyed learning about China, \u518d\u89c1!'.encode('utf-8')
+				print(u'\nHope you enjoyed learning about China, \u518d\u89c1!')
 				exit(0)
 
 def print_more_info_prov(p, pab, pp, ppr, pa, par, pc, pcp):
-	print "\nHere is some information about %s:\n" % p
-	print "Abbreviation: %s" % pab
-	print "Population: %s (%s)" % (pp, ppr)
-	print "Area: %s square km (%s)" % (pa, par)
-	print "Capital: %s" % pc
-	print "Population of %s: %s" % (pc, pcp)
-	print "\nType 'wiki' to read even more about %s! " % p
-	wiki = raw_input().lower()
+	print("\nHere is some information about %s:\n" % p)
+	print("Abbreviation: %s" % pab)
+	print("Population: %s (%s)" % (pp, ppr))
+	print("Area: %s square km (%s)" % (pa, par))
+	print("Capital: %s" % pc)
+	print("Population of %s: %s" % (pc, pcp))
+	print("\nType 'wiki' to read even more about %s! " % p)
+	wiki = input().lower()
 	if wiki == 'wiki':
 		webbrowser.open("https://en.wikipedia.org/wiki/%s" % p)
 		webbrowser.open("https://en.wikipedia.org/wiki/%s" % pc)
 	
 def print_more_info_muni(m, mab, mp, mpr, ma, mar, mc, mcp):
-	print "\nHere is some information about %s:\n" % m
-	print "Abbreviation: %s" % mab
-	print "Population: %s (%s)" % (mp, mpr)
-	print "Area: %s square km (%s)" % (ma, mar)
-	print "Capital: %s" % mc
-	print "Population of %s: %s" % (mc, mcp)
-	print "\nType 'wiki' to read even more about %s! " % m
-	wiki = raw_input().lower()
+	print("\nHere is some information about %s:\n" % m)
+	print("Abbreviation: %s" % mab)
+	print("Population: %s (%s)" % (mp, mpr))
+	print("Area: %s square km (%s)" % (ma, mar))
+	print("Capital: %s" % mc)
+	print("Population of %s: %s" % (mc, mcp))
+	print("\nType 'wiki' to read even more about %s! " % m)
+	wiki = input().lower()
 	if wiki == 'wiki':
 		webbrowser.open("https://en.wikipedia.org/wiki/%s" % m)
 	
 def print_more_info_autreg(aur, aurab, aurp, aurpr, aura, aurar, aurc, aurcp):
-	print "\nHere is some information about %s Autonomous Region:\n" % aur
-	print "Abbreviation: %s" % aurab
-	print "Population: %s (%s)" % (aurp, aurpr)
-	print "Area: %s square km (%s)" % (aura, aurar)
-	print "Capital: %s" % aurc
-	print "Population of %s: %s" % (aurc, aurcp)
-	print "\nType 'wiki' to read even more about %s! " % aur
-	wiki = raw_input().lower()
+	print("\nHere is some information about %s Autonomous Region:\n" % aur)
+	print("Abbreviation: %s" % aurab)
+	print("Population: %s (%s)" % (aurp, aurpr))
+	print("Area: %s square km (%s)" % (aura, aurar))
+	print("Capital: %s" % aurc)
+	print("Population of %s: %s" % (aurc, aurcp))
+	print("\nType 'wiki' to read even more about %s! " % aur)
+	wiki = input().lower()
 	if wiki == 'wiki':
 		webbrowser.open("https://en.wikipedia.org/wiki/%s" % aur)
 		webbrowser.open("https://en.wikipedia.org/wiki/%s" % aurc)
 
 def print_more_info_admreg(admr, admrab, admrp, admrpr, admra, admrar, admrc, admrcpr):
-	print "\nHere is some information about %s:\n" % admr
-	print "Abbreviation: %s" % admrab
-	print "Population: %s (%s)" % (admrp, admrpr)
-	print "Area: %s square km (%s)" % (admra, admrar)
-	print "Capital: %s" % admrc
-	print "Population of %s: %s" % (admr, admrcpr)
-	print "\nType 'wiki' to read even more about %s! " % admr
-	wiki = raw_input().lower()
+	print("\nHere is some information about %s:\n" % admr)
+	print("Abbreviation: %s" % admrab)
+	print("Population: %s (%s)" % (admrp, admrpr))
+	print("Area: %s square km (%s)" % (admra, admrar))
+	print("Capital: %s" % admrc)
+	print("Population of %s: %s" % (admr, admrcpr))
+	print("\nType 'wiki' to read even more about %s! " % admr)
+	wiki = input().lower()
 	if wiki == 'wiki':
 		webbrowser.open("https://en.wikipedia.org/wiki/%s" % admr)
 
